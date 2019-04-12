@@ -1,23 +1,31 @@
+import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 public class MovieGame {
 	
-	public static void main (String args []) {
+	private Random random = new Random();
+	
+	public static void main (String args []) throws FileNotFoundException {
 		 
 		File file = new File("C:\\Users\\anvut\\eclipse-workspace\\Guess The Movie\\bin\\Movies.txt");
 		
 		int count=0;
-		try {
+		
 			
 			Scanner scanner = new Scanner(file);
+			
+			List<String> list = new ArrayList<String>();
+			
 			while (scanner.hasNextLine()) {
 				
 				String line = scanner.nextLine();
+				list.add(line);
 		   //   int intLine = Integer.parseInt(line);			  
 		   //   Random random = new Random();
 		   //   String word = random.nextLine(line); 
@@ -25,19 +33,32 @@ public class MovieGame {
 				count++;
 		   //   System.out.println(count);
 		   
-			Random random = new Random();
-		int rint = random.nextInt(count);
-		line.indexOf(line, rint);
-		System.out.println(line);
-		
-		}
 			
-		} catch (FileNotFoundException e) {
+				//System.out.println(line);
+		
+			}
+			
+		/*} catch (FileNotFoundException e) {
 			
 			System.out.println("error");
 			
-		}
+		}*/
+		
+		MovieGame mo = new MovieGame();
+		
+		
+			
+			System.out.println(mo.getRandomList(list));
+		
 	   
+	}
+	
+	public String getRandomList(List<String> list) {
+		
+		int index = random.nextInt(list.size());
+		
+		return list.get(index);
+		
 	}
 	
 	/*public static void main(String arg[]) throws Exception {
